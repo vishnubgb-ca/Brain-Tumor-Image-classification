@@ -17,6 +17,10 @@ pipeline{
                 sh 'python3 data_transformation.py'
             }
         }
+        steps {
+                sh 'cp model_dataset.pkl $WORKSPACE'
+                archiveArtifacts 'dataset.pkl'
+            }
         
     }
     post{
