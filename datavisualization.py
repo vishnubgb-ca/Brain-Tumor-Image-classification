@@ -3,7 +3,7 @@ from PIL import Image
 import requests
 from io import BytesIO
 import os 
-
+import pathlib 
 def open_random_image(path):
     # Get a list of all files in the folder
     all_files = os.listdir(folder_path)
