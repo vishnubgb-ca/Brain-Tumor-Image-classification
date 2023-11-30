@@ -2,6 +2,7 @@ from datavisualization import visualise_image
 import torchvision
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader, Dataset
+from torchvision import datasets
 import requests
 from PIL import Image
 from io import BytesIO
