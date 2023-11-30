@@ -22,7 +22,7 @@ pipeline{
     post{
        
         always {
-            archiveArtifacts artifacts: 'test.pt', onlyIfSuccessful: true
+            archiveArtifacts artifacts: 'model_dataset.pkl', onlyIfSuccessful: true
         }
             }
 }
