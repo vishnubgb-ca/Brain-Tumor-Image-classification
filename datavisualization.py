@@ -21,7 +21,7 @@ def visualise_image():
     url_response = requests.get(url)
     with zipfile.ZipFile(BytesIO(url_response.content)) as z:
         z.extractall('.')
-    print("------------",os.listdir(os.path.join(os.getcwd(),"Training/glioma_tumor")))
+    print(os.path.join(os.getcwd(),"Training/glioma_tumor")),"------------",os.listdir(os.path.join(os.getcwd(),"Training/glioma_tumor")))
     path = pathlib.Path(os.path.join(os.getcwd(),"Training"))
     # glioma_tumor_image_urls,meningioma_tumor_image_urls,no_tumor_image_urls,pituitory_tumor_image_urls = extract_data()
     # glioma_tumor_response = requests.get(glioma_tumor_image_urls[0])
