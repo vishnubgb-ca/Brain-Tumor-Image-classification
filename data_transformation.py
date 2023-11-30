@@ -6,7 +6,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 import torch
-import pickle
+import dill as pickle
 
 def transform_data():
     glioma_tumor_image_urls,meningioma_tumor_image_urls,no_tumor_image_urls,pituitory_tumor_image_urls = visualise_image()
