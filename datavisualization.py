@@ -17,7 +17,7 @@ def open_random_image(path):
 def visualise_image():
     url = extract_data()
     url_response = requests.get(url)
-    with zipfile.ZipFile(BytesIO(response.content)) as z:
+    with zipfile.ZipFile(BytesIO(url_response.content)) as z:
         z.extractall('.')
     path = pathlib.Path("Training")
     # glioma_tumor_image_urls,meningioma_tumor_image_urls,no_tumor_image_urls,pituitory_tumor_image_urls = extract_data()
