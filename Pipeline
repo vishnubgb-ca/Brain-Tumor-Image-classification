@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+
+    stages{
+        stage("Extract Data"){
+            steps{
+                sh 'python3 data_extraction.py'
+            }
+        }
+        stage("Visualize Data"){
+            steps{
+                sh 'python3 datavisualization.py'
+            }
+        }
+        stage("Transform Data"){
+            steps{
+                sh 'python3 data_transformation.py'
+            }
+        }
+        stage("Save Artifact"){
+            steps{
+                sh 'python3 save_artifact.py'
+            }
+        }
+    }
+    post{
+       
+        always {
+            archiveArtifacts artifacts: 'test.pt', onlyIfSuccessful: true
+        }
+            }
+}
