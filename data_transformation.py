@@ -9,7 +9,7 @@ import torch
 import dill as pickle
 
 def transform_data():
-    glioma_tumor_image_urls,meningioma_tumor_image_urls,no_tumor_image_urls,pituitory_tumor_image_urls = visualise_image()
+    path = visualise_image()
     data_transform = torchvision.transforms.Compose(
     [
         transforms.Resize(256),
@@ -31,29 +31,30 @@ def transform_data():
 
     # model_dataset = datasets.ImageFolder(path, transform=data_transform)
 
-    def download_image(url):
-        response = requests.get(url)
-        img = Image.open(BytesIO(response.content))
-        return img
+    # def download_image(url):
+    #     response = requests.get(url)
+    #     img = Image.open(BytesIO(response.content))
+    #     return img
     
-    class CustomImageDataset(Dataset):
-        def __init__(self, image_urls, transform=None):
-            self.image_urls = image_urls
-            self.transform = transform
+    # class CustomImageDataset(Dataset):
+    #     def __init__(self, image_urls, transform=None):
+    #         self.image_urls = image_urls
+    #         self.transform = transform
 
-        def __len__(self):
-            return len(self.image_urls)
+    #     def __len__(self):
+    #         return len(self.image_urls)
 
-        def __getitem__(self, idx):
-            img = download_image(self.image_urls[idx])
-            if self.transform:
-                img = self.transform(img)
-            return img
+    #     def __getitem__(self, idx):
+    #         img = download_image(self.image_urls[idx])
+    #         if self.transform:
+    #             img = self.transform(img)
+    #         return img
     
-    all_image_urls = glioma_tumor_image_urls+meningioma_tumor_image_urls+no_tumor_image_urls+pituitory_tumor_image_urls
-    model_dataset = CustomImageDataset(all_image_urls, transform=data_transform)
-    torch.save(model_dataset,'model_dataset.pt')
+    # all_image_urls = glioma_tumor_image_urls+meningioma_tumor_image_urls+no_tumor_image_urls+pituitory_tumor_image_urls
+    # model_dataset = CustomImageDataset(all_image_urls, transform=data_transform)
+    # torch.save(model_dataset,'model_dataset.pt')
+    model_dataset = datasets.ImageFolder(path, transform=data_transform)
     with open('model_dataset.pkl', 'wb') as f:
-        pickle.dump('model_dataset.pt', f)
+        pickle.dump(model_dataset, f)
     return model_dataset
 transform_data()
