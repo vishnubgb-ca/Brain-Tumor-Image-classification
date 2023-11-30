@@ -17,11 +17,7 @@ pipeline{
                 sh 'python3 data_transformation.py'
             }
         }
-        stage("Save Artifact"){
-            steps{
-                sh 'python3 save_artifact.py'
-            }
-        }
+        
     }
     post{
        
