@@ -52,7 +52,8 @@ def transform_data():
     
     all_image_urls = glioma_tumor_image_urls+meningioma_tumor_image_urls+no_tumor_image_urls+pituitory_tumor_image_urls
     model_dataset = CustomImageDataset(all_image_urls, transform=data_transform)
+    torch.save(model_dataset,'model_dataset.pt')
     with open('model_dataset.pkl', 'wb') as f:
-        pickle.dump(model_dataset, f)
+        pickle.dump('model_dataset.pt', f)
     return model_dataset
 transform_data()
