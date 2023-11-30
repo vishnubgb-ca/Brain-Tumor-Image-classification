@@ -7,9 +7,9 @@ import pathlib
 import zipfile
 def open_random_image(path):
     # Get a list of all files in the folder
-    all_files = os.listdir(folder_path)
+    all_files = os.listdir(path)
     random_image_file = random.choice(all_files)
-    image_path = os.path.join(folder_path, random_image_file)
+    image_path = os.path.join(path, random_image_file)
     image = Image.open(image_path)
     return image
     
