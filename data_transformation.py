@@ -51,7 +51,6 @@ def transform_data():
     
     all_image_urls = glioma_tumor_image_urls+meningioma_tumor_image_urls+no_tumor_image_urls+pituitory_tumor_image_urls
     model_dataset = CustomImageDataset(all_image_urls, transform=data_transform)
-    with open('model_dataset.pkl', 'wb') as f:
-        pickle.dump(model_dataset, f)
+    
     return model_dataset
 transform_data()
