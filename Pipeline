@@ -17,9 +17,11 @@ pipeline{
                 sh 'python3 data_transformation.py'
             }
         }
-        stage("Archive Artifact) {
-                sh 'cp model_dataset.pkl $WORKSPACE'
-                archiveArtifacts 'dataset.pkl'
+        post{
+       
+        always {
+            archiveArtifacts artifacts: 'model_dataset.pkl', onlyIfSuccessful: true
+        }
             }
         
     }
