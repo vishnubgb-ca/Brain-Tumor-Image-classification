@@ -4,6 +4,7 @@ import requests
 from io import BytesIO
 import os 
 import pathlib 
+import zipfile
 def open_random_image(path):
     # Get a list of all files in the folder
     all_files = os.listdir(folder_path)
