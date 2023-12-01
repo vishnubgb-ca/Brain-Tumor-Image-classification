@@ -36,7 +36,7 @@ def extract_data():
         return presigned_urls
     url = s3.generate_presigned_url(
                     ClientMethod='get_object',
-                    Params={'Bucket': bucket_name, 'Key': 'Training.zip'},
+                    Params={'Bucket': bucket_name, 'Key': 'Water_Bodies_Dataset_Split.zip'},
                     ExpiresIn=7200  # URL expiration time in seconds (adjust as needed)
                 )
     # glioma_tumor = get_object_presigned_url(bucket_name,glioma_tumor_folder_prefix_training)
